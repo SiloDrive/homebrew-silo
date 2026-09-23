@@ -1,28 +1,28 @@
 class Silo < Formula
   desc "Single-binary file sync server with per-library end-to-end encryption"
   homepage "https://github.com/SiloDrive/silo"
-  version "0.8.0"
+  version "0.9.0"
   license "AGPL-3.0-only"
 
   on_macos do
     on_arm do
-      url "https://github.com/SiloDrive/silo/releases/download/v0.8.0/silo-v0.8.0-darwin-arm64.tar.gz"
-      sha256 "c9a1bddb018c01ce29dd227fc28e3db48ca4da43af8d0af036c710810ed40020"
+      url "https://github.com/SiloDrive/silo/releases/download/v0.9.0/silo-v0.9.0-darwin-arm64.tar.gz"
+      sha256 "5174c6705103a6afc7a597fb4d42a3d4d155cb0f256e7774094e00e098f5059b"
     end
     on_intel do
-      url "https://github.com/SiloDrive/silo/releases/download/v0.8.0/silo-v0.8.0-darwin-amd64.tar.gz"
-      sha256 "3d874d2aff5e5562a5bac30bad14d7e7e6607bc1e89b3accceacf9512f466a48"
+      url "https://github.com/SiloDrive/silo/releases/download/v0.9.0/silo-v0.9.0-darwin-amd64.tar.gz"
+      sha256 "6356d6ef7197aed79b1a368bbe71714631926ed0e175b1e1b419d221c1a26b67"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/SiloDrive/silo/releases/download/v0.8.0/silo-v0.8.0-linux-arm64.tar.gz"
-      sha256 "5fdced179b669ccd6de3fce93401265db095939a4c3151e5527a64ecc7add505"
+      url "https://github.com/SiloDrive/silo/releases/download/v0.9.0/silo-v0.9.0-linux-arm64.tar.gz"
+      sha256 "2cce990e06518a07fd2201fed9fc4120b8890421c7513124962d995427352a37"
     end
     on_intel do
-      url "https://github.com/SiloDrive/silo/releases/download/v0.8.0/silo-v0.8.0-linux-amd64.tar.gz"
-      sha256 "08c53bc60f67d5dff2ec8dc0c486fb13529f3a86f9785f7fcb1a8ecc103ea549"
+      url "https://github.com/SiloDrive/silo/releases/download/v0.9.0/silo-v0.9.0-linux-amd64.tar.gz"
+      sha256 "5f367ff36a3b69294fbd6a0ea9ce5149c4453846bcd73eb095eb0b9ad4ee2642"
     end
   end
 
