@@ -1,28 +1,28 @@
 class Silo < Formula
   desc "Single-binary file sync server with per-library end-to-end encryption"
-  homepage "https://github.com/SiloDrive/silo"
-  version "0.11.2"
+  homepage "https://silodrive.io"
+  version "0.13.0"
   license "AGPL-3.0-only"
 
   on_macos do
     on_arm do
-      url "https://github.com/SiloDrive/silo/releases/download/v0.11.2/silo-v0.11.2-darwin-arm64.tar.gz"
-      sha256 "882f3ab23d8933a6c9b5f5b5b3376a3fe4b0daf80b10648ccfd62b4e21b076b9"
+      url "https://silodrive.io/alpha/download/silo/silo-v0.13.0-darwin-arm64.tar.gz"
+      sha256 "63230e740536226e41ff3a18baef827701cc6f538eb0572fcd72cabfc814d0da"
     end
     on_intel do
-      url "https://github.com/SiloDrive/silo/releases/download/v0.11.2/silo-v0.11.2-darwin-amd64.tar.gz"
-      sha256 "163c8e0b1d119b2005f420bd5da2058b65aec02582be03f09f537cf9ebad966d"
+      url "https://silodrive.io/alpha/download/silo/silo-v0.13.0-darwin-amd64.tar.gz"
+      sha256 "a946ca3a984d9073f620bb62dc628bc8d5271799b5cbf707258c42c3415d4dcf"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/SiloDrive/silo/releases/download/v0.11.2/silo-v0.11.2-linux-arm64.tar.gz"
-      sha256 "010950c826c96b749102f2913eefc6e34a8ce7066dd4fb9e52aa21e9624fee70"
+      url "https://silodrive.io/alpha/download/silo/silo-v0.13.0-linux-arm64.tar.gz"
+      sha256 "29b765ae96677e3f273eee0680c244af997c88b5740527efa1c18e33e52a407d"
     end
     on_intel do
-      url "https://github.com/SiloDrive/silo/releases/download/v0.11.2/silo-v0.11.2-linux-amd64.tar.gz"
-      sha256 "8659af08e12161e0ea4a92dfef7df0cc03013693fc1aefb4901cf2297f96eac2"
+      url "https://silodrive.io/alpha/download/silo/silo-v0.13.0-linux-amd64.tar.gz"
+      sha256 "a02f91dca7abc5fce200f4d99c8f7fd8a4a3402c2c59ac134a5a2ee483d018a9"
     end
   end
 
@@ -36,9 +36,10 @@ class Silo < Formula
     # ahead of the Cellar one on PATH. The .deb, the .rpm and the AUR package
     # each write the same file; this is the fourth.
     #
-    # internal/upgrade.MarkerPath reads <prefix>/share/silo/install-method,
-    # derived from the binary's own location. That lands here whether
-    # os.Executable resolves the symlink (Linux, via /proc/self/exe, giving
+    # silo-upgrade's marker_path (Go's internal/upgrade.MarkerPath before
+    # it) reads <prefix>/share/silo/install-method, derived from the
+    # binary's own location. That lands here whether the executable's path
+    # resolves the symlink (Linux, via /proc/self/exe, giving
     # the Cellar path) or not (macOS, giving #{HOMEBREW_PREFIX}/bin/silo,
     # whose share/silo is the symlink `brew link` made to this one).
     (share/"silo").mkpath
@@ -46,8 +47,8 @@ class Silo < Formula
   end
 
   test do
-    # `silo version` prints the version with no leading v -- normalizeVersion
-    # in cmd/silo/main.go strips it -- so asserting "v#{version}" here silently
+    # `silo version` prints the version with no leading v -- normalize_version
+    # in crates/silo/src/main.rs strips it -- so asserting "v#{version}" here silently
     # fails for every release. Compare against the bare string.
     assert_equal version.to_s, shell_output("#{bin}/silo version").strip
   end
